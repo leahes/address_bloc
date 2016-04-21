@@ -15,10 +15,9 @@ class MenuController
     puts "4 - Import entries from a CSV"
     puts "5 - Veiw Entry n"
     puts "6 - Exit"
-    print "Enter your selection:"
+    print "Enter your selection: "
 
     selection = gets.to_i
-    puts "You picked #{selection}"
 
     case selection
        when 1
@@ -53,15 +52,16 @@ class MenuController
      end
 
      def entry_submenu_n
-       puts "Enter number to view"
+       print "Enter number to view:"
        selection = gets.chomp.to_i
+
 
        if selection < @address_book.entries.count
          puts @address_book.entries[selection]
-         puts " Hit Enter for Main Menu"
-         selection = gets.chomp
+         puts "Hit Enter for Main Menu"
+         gets.chomp
          system "clear"
-
+         main_menu
        else
          puts "#{selection} not vaild"
          entry_submenu_n
