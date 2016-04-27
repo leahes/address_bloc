@@ -9,6 +9,15 @@ require_relative '../models/address_book'
      expect(entry.email).to eq expected_email
    end
 
+   describe "#demolish" do
+     it "deletes all entries in Address Book" do
+       book.add_entry("Rob", "555-555-5551", "rob@blocmail.com")
+       book.add_entry("toews", "555-555-5552", "toews@blocmail.com")
+       book.add_entry("darling", "555-555-5553", "darling@blocmail.com")
+     book.demolish
+     expect(book.entries.size).to eq (0)
+   end
+end
    describe "attributes" do
      it "responds to entries" do
        expect(book).to respond_to(:entries)
@@ -23,6 +32,7 @@ require_relative '../models/address_book'
         expect(book.entries.size).to eq(0)
       end
    end
+
    describe "#add_entry" do
        it "adds only one entry to the address book" do
          book.add_entry('Ada Lovelace', '010.012.1815', 'augusta.king@lovelace.com')
